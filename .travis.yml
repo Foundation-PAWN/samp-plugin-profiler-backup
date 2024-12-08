@@ -1,0 +1,29 @@
+language: cpp
+compiler: gcc
+
+install:
+  - sudo apt-add-repository -y ppa:kubuntu-ppa/backports
+  - sudo apt-get update -qq
+  - sudo apt-get install -y gcc-4.4 gcc-4.4-multilib g++-4.4 g++-4.4-multilib cmake
+
+before_script:
+  - cmake . -DCMAKE_BUILD_TYPE=Release
+            -DCMAKE_COMPILER=gcc-4.4
+            -DCMAKE_CXX_COMPILER=g++-4.4
+
+script:
+  - make
+  - make package
+
+deploy:
+  provider: releases
+  api_key:
+    secure: l+QLsE3dk0WsxbZ8x6jFQg9WnoDvNkxEjpNutcSazr8bTGZblKLj3Y/SI+OSeh/y34nmDrsEhglg8/a0xB4KoGZBkF7/g77dhubuIn14Ep6m4xROnYjGtxK8fEu6vWbRCCAzb4tdDK6ngVz+lEw0QOt7mYMXbtpHNgolD9E60dI=
+  file_glob: true
+  file:
+    - 'profiler-*-linux.tar.gz'
+  draft: true
+  skip_cleanup: true
+  on:
+    repo: Zeex/samp-plugin-profiler
+    tags: true

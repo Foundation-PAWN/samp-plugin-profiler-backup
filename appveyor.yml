@@ -1,0 +1,25 @@
+version: '{build}'
+
+configuration:
+  - RelWithDebInfo
+
+before_build:
+  - cmake . -G "Visual Studio 10 2010"
+
+build_script:
+  - cmake --build . --config %CONFIGURATION%
+  - cmake --build . --config %CONFIGURATION% --target package
+
+artifacts:
+  - path: profiler-*-win32.zip
+    name: Binaries
+
+deploy:
+  description: '<Put release description here>'
+  provider: GitHub
+  auth_token:
+    secure: ++mk9GhXTpN/hdVjIIi/nHpu0gYpDybMJNDPB3lld8r1UyfoPbz08SVGeSS84HjR
+  artifact: /profiler-.*-win32\.zip/
+  draft: true
+  on:
+    appveyor_repo_tag: true
