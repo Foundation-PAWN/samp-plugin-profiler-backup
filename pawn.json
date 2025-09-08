@@ -1,6 +1,6 @@
 {
     "user": "Foundation-PAWN",
-    "repo": "samp-plugin-profiler",
+    "repo": "samp-plugin-profiler-backup",
     "resources": [
         {
             "name": "^profiler-(.*)-linux.tar.gz$",
