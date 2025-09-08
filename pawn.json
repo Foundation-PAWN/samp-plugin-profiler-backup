@@ -1,5 +1,5 @@
 {
-    "user": "Zeex",
+    "user": "Foundation-PAWN",
     "repo": "samp-plugin-profiler",
     "resources": [
         {
@@ -19,6 +19,6 @@
     ],
     "contributors": ["Zeex"],
     "runtime": {
-        "plugins": ["Zeex/profiler"]
+        "plugins": ["Foundation-PAWN/profiler"]
     }
 }
